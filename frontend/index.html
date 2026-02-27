@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VoiceBank – Financial Access for Everyone</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Language Selector -->
+  <div class="lang-bar">
+    <span>🌐 Language:</span>
+    <select id="langSelect">
+      <option value="en-US">English</option>
+      <option value="hi-IN">हिंदी (Hindi)</option>
+      <option value="sw-KE">Swahili</option>
+      <option value="fr-FR">Français</option>
+      <option value="es-ES">Español</option>
+    </select>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">🏦 VoiceBank</div>
+    <div class="tagline" id="tagline">Your voice is your password</div>
+    <div class="header-user">
+      <span id="headerUserName"></span>
+      <button class="logout-btn" onclick="logout()">🔓 Logout</button>
+    </div>
+  </header>
+
+  <!-- Main App -->
+  <main class="container">
+
+    <!-- Voice Button Section -->
+    <section class="voice-section" id="voiceSection">
+      <div class="mic-wrapper">
+        <button class="mic-btn" id="micBtn" aria-label="Hold to speak">
+          <span class="mic-icon">🎤</span>
+        </button>
+        <div class="pulse-ring" id="pulseRing"></div>
+      </div>
+      <p class="mic-hint" id="micHint">Tap & Hold to Speak</p>
+      <div class="transcript-box" id="transcriptBox">
+        <p id="transcriptText">Say something like: <em>"Check my balance"</em> or <em>"Send 500 to Asha"</em></p>
+      </div>
+    </section>
+
+    <!-- Response / Action Panel -->
+    <section class="response-section" id="responseSection" hidden>
+      <div class="response-card" id="responseCard">
+        <div class="response-icon" id="responseIcon">✅</div>
+        <p class="response-text" id="responseText"></p>
+        <div class="action-buttons" id="actionButtons"></div>
+      </div>
+    </section>
+
+    <!-- Quick Action Icons -->
+    <section class="quick-actions">
+      <h3>Quick Actions</h3>
+      <div class="qa-grid">
+        <button class="qa-btn" onclick="simulateCommand('check balance')">
+          <span>💰</span><br/>Balance
+        </button>
+        <button class="qa-btn" onclick="simulateCommand('send money')">
+          <span>📤</span><br/>Send
+        </button>
+        <button class="qa-btn" onclick="simulateCommand('transaction history')">
+          <span>📋</span><br/>History
+        </button>
+        <button class="qa-btn" onclick="simulateCommand('pay bill')">
+          <span>🧾</span><br/>Pay Bill
+        </button>
+        <button class="qa-btn" onclick="simulateCommand('savings tips')">
+          <span>💡</span><br/>Tips
+        </button>
+        <button class="qa-btn" onclick="simulateCommand('loan status')">
+          <span>🏷️</span><br/>Loan
+        </button>
+      </div>
+    </section>
+
+    <!-- Balance Display Card -->
+    <section class="balance-card" id="balanceCard" hidden>
+      <h3>Account Summary</h3>
+      <div class="balance-row">
+        <span>Savings Balance</span>
+        <strong id="savingsAmt">₹ 12,450.00</strong>
+      </div>
+      <div class="balance-row">
+        <span>Last Transaction</span>
+        <strong id="lastTxn">₹ 500 sent to Asha (3 days ago)</strong>
+      </div>
+    </section>
+
+    <!-- Transaction History Panel -->
+    <section class="history-panel" id="historyPanel" hidden>
+      <h3>Recent Transactions</h3>
+      <ul class="txn-list" id="txnList"></ul>
+    </section>
+
+    <!-- Tips Panel -->
+    <section class="tips-panel" id="tipsPanel" hidden>
+      <h3>💡 Savings Tips</h3>
+      <p id="tipText"></p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>🔒 Secured | Works on basic phones | Supports offline mode</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/voice.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/session.js"></script>
+</body>
+</html>

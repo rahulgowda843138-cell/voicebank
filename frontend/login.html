@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VoiceBank – Secure Login</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/auth.css"/>
+</head>
+<body class="auth-body">
+
+  <!-- SCREEN 1: Welcome -->
+  <div class="auth-screen" id="screenWelcome">
+    <div class="auth-logo">🏦</div>
+    <h1 class="auth-title">VoiceBank</h1>
+    <p class="auth-sub">Secure. Simple. Voice-First.</p>
+    <button class="auth-btn primary" onclick="showScreen('screenLogin')">Login</button>
+    <button class="auth-btn secondary" onclick="showScreen('screenRegister')">Create Account</button>
+  </div>
+
+  <!-- SCREEN 2: Login with Phone -->
+  <div class="auth-screen hidden" id="screenLogin">
+    <div class="auth-header">
+      <button class="back-btn" onclick="showScreen('screenWelcome')">← Back</button>
+      <h2>Login</h2>
+    </div>
+    <div class="auth-icon">📱</div>
+    <p class="auth-label">Enter your Phone Number</p>
+    <div class="phone-input-wrapper">
+      <span class="phone-prefix">+91</span>
+      <input type="tel" id="loginPhone" class="auth-input" placeholder="9876543210" maxlength="10"/>
+    </div>
+    <p class="auth-error hidden" id="loginPhoneError">Please enter a valid 10-digit number</p>
+    <button class="auth-btn primary" onclick="proceedToLoginPIN()">Continue →</button>
+    <p class="auth-hint">Demo: use phone <strong>9876543210</strong></p>
+  </div>
+
+  <!-- SCREEN 3: Enter PIN (Login) -->
+  <div class="auth-screen hidden" id="screenPIN">
+    <div class="auth-header">
+      <button class="back-btn" onclick="showScreen('screenLogin')">← Back</button>
+      <h2>Enter PIN</h2>
+    </div>
+    <div class="auth-icon">🔐</div>
+    <p class="auth-label">Enter your 4-digit Security PIN</p>
+    <div class="pin-dots" id="loginPinDots">
+      <span class="dot" id="dot0"></span>
+      <span class="dot" id="dot1"></span>
+      <span class="dot" id="dot2"></span>
+      <span class="dot" id="dot3"></span>
+    </div>
+    <p class="auth-error hidden" id="pinError">Incorrect PIN. Try again.</p>
+    <div class="numpad" id="loginNumpad"></div>
+    <p class="auth-hint">Demo PIN: <strong>1234</strong></p>
+  </div>
+
+  <!-- SCREEN 4: Register -->
+  <div class="auth-screen hidden" id="screenRegister">
+    <div class="auth-header">
+      <button class="back-btn" onclick="showScreen('screenWelcome')">← Back</button>
+      <h2>Create Account</h2>
+    </div>
+    <div class="auth-icon">👤</div>
+    <input type="text"  id="regName"  class="auth-input" placeholder="Full Name"/>
+    <input type="tel"   id="regPhone" class="auth-input" placeholder="Phone Number (10 digits)" maxlength="10"/>
+    <p class="auth-error hidden" id="regError">Please fill all fields correctly</p>
+    <button class="auth-btn primary" onclick="proceedToSetPIN()">Set PIN →</button>
+  </div>
+
+  <!-- SCREEN 5: Set PIN (Register) -->
+  <div class="auth-screen hidden" id="screenSetPIN">
+    <div class="auth-header">
+      <button class="back-btn" onclick="showScreen('screenRegister')">← Back</button>
+      <h2>Set Your PIN</h2>
+    </div>
+    <div class="auth-icon">🔑</div>
+    <p class="auth-label">Choose a 4-digit Security PIN</p>
+    <div class="pin-dots" id="setPinDots">
+      <span class="dot" id="sdot0"></span>
+      <span class="dot" id="sdot1"></span>
+      <span class="dot" id="sdot2"></span>
+      <span class="dot" id="sdot3"></span>
+    </div>
+    <div class="numpad" id="setNumpad"></div>
+  </div>
+
+  <!-- SCREEN 6: Confirm PIN (Register) -->
+  <div class="auth-screen hidden" id="screenConfirmPIN">
+    <div class="auth-header">
+      <button class="back-btn" onclick="showScreen('screenSetPIN')">← Back</button>
+      <h2>Confirm PIN</h2>
+    </div>
+    <div class="auth-icon">✅</div>
+    <p class="auth-label">Re-enter your PIN to confirm</p>
+    <div class="pin-dots" id="confirmPinDots">
+      <span class="dot" id="cdot0"></span>
+      <span class="dot" id="cdot1"></span>
+      <span class="dot" id="cdot2"></span>
+      <span class="dot" id="cdot3"></span>
+    </div>
+    <p class="auth-error hidden" id="confirmPinError">PINs do not match. Try again.</p>
+    <div class="numpad" id="confirmNumpad"></div>
+  </div>
+
+  <!-- SCREEN 7: Success -->
+  <div class="auth-screen hidden" id="screenSuccess">
+    <div class="auth-icon big-icon">🎉</div>
+    <h2 class="auth-title">Welcome!</h2>
+    <p class="auth-sub" id="successMsg">Login successful</p>
+    <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+    <p class="auth-hint">Redirecting to your dashboard...</p>
+  </div>
+
+  <!-- SCREEN 8: Locked -->
+  <div class="auth-screen hidden" id="screenLocked">
+    <div class="auth-icon">🔒</div>
+    <h2 class="auth-title">Account Locked</h2>
+    <p class="auth-sub">Too many incorrect attempts.<br/>Try again after <strong id="lockTimer">30</strong> seconds.</p>
+    <button class="auth-btn secondary" id="unlockBtn" disabled onclick="unlockAccount()">Wait...</button>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

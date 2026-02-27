@@ -1,0 +1,273 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f0f4f8;
+  color: #1a1a2e;
+  min-height: 100vh;
+}
+
+/* ===== LANGUAGE BAR ===== */
+.lang-bar {
+  background: #1a1a2e;
+  color: #fff;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.lang-bar select {
+  background: #16213e;
+  color: #fff;
+  border: 1px solid #0f3460;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, #0f3460, #16213e);
+  color: white;
+  text-align: center;
+  padding: 20px 16px 16px;
+}
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.tagline {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== VOICE SECTION ===== */
+.voice-section {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.mic-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 12px;
+}
+
+.mic-btn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e94560, #c62a47);
+  border: none;
+  cursor: pointer;
+  font-size: 36px;
+  color: white;
+  box-shadow: 0 4px 18px rgba(233,69,96,0.4);
+  transition: transform 0.1s, box-shadow 0.1s;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mic-btn:active, .mic-btn.listening {
+  transform: scale(0.94);
+  box-shadow: 0 2px 10px rgba(233,69,96,0.3);
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid rgba(233,69,96,0.5);
+  animation: none;
+  z-index: 1;
+}
+.pulse-ring.active {
+  animation: pulse 1.2s infinite;
+}
+@keyframes pulse {
+  0%   { transform: scale(0.9); opacity: 1; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+.mic-hint {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 14px;
+}
+
+.transcript-box {
+  background: #f7f9fc;
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  padding: 12px 16px;
+  min-height: 54px;
+  font-size: 15px;
+  color: #333;
+  text-align: left;
+}
+.transcript-box em { color: #0f3460; }
+
+/* ===== RESPONSE SECTION ===== */
+.response-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  text-align: center;
+}
+.response-icon { font-size: 36px; margin-bottom: 10px; }
+.response-text { font-size: 16px; color: #1a1a2e; line-height: 1.5; }
+.action-buttons { margin-top: 14px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.action-buttons button {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn-confirm { background: #0f3460; color: white; }
+.btn-cancel  { background: #eee; color: #333; }
+
+/* ===== QUICK ACTIONS ===== */
+.quick-actions {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.quick-actions h3 { font-size: 15px; color: #555; margin-bottom: 12px; }
+.qa-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.qa-btn {
+  background: #f0f4f8;
+  border: 1px solid #dde3ec;
+  border-radius: 10px;
+  padding: 12px 6px;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s;
+  color: #1a1a2e;
+}
+.qa-btn span { font-size: 22px; display: block; margin-bottom: 4px; }
+.qa-btn:hover { background: #e2e8f4; }
+
+/* ===== BALANCE CARD ===== */
+.balance-card {
+  background: linear-gradient(135deg, #0f3460, #16213e);
+  color: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 14px rgba(15,52,96,0.3);
+}
+.balance-card h3 { font-size: 14px; opacity: 0.7; margin-bottom: 12px; }
+.balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 14px;
+}
+.balance-row:last-child { border-bottom: none; }
+.balance-row strong { font-size: 17px; }
+
+/* ===== HISTORY PANEL ===== */
+.history-panel {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.history-panel h3 { font-size: 15px; color: #555; margin-bottom: 12px; }
+.txn-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.txn-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #f7f9fc;
+  font-size: 14px;
+}
+.txn-item .txn-label { color: #333; }
+.txn-item .txn-amount { font-weight: 700; }
+.txn-item.credit .txn-amount { color: #2ecc71; }
+.txn-item.debit  .txn-amount { color: #e94560; }
+
+/* ===== TIPS PANEL ===== */
+.tips-panel {
+  background: #fffbea;
+  border: 1px solid #ffe88a;
+  border-radius: 14px;
+  padding: 18px;
+}
+.tips-panel h3 { font-size: 15px; margin-bottom: 10px; color: #b8860b; }
+.tips-panel p { font-size: 14px; color: #444; line-height: 1.6; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #1a1a2e;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  font-size: 12px;
+  padding: 12px;
+  margin-top: 8px;
+}
+
+/* ===== UTILITY ===== */
+[hidden] { display: none !important; }
+
+/* ===== HEADER USER & LOGOUT ===== */
+.header {
+  position: relative;
+}
+.header-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+.logout-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.logout-btn:hover { background: rgba(255,255,255,0.25); }

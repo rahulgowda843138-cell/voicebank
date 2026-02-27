@@ -1,0 +1,66 @@
+{
+  "sample_commands": [
+    {
+      "language": "en-US",
+      "commands": [
+        "check my balance",
+        "send 500 to Asha",
+        "show transaction history",
+        "pay electricity bill",
+        "give me savings tips",
+        "what is my loan status"
+      ]
+    },
+    {
+      "language": "hi-IN",
+      "commands": [
+        "बैलेंस चेक करो",
+        "आशा को 500 भेजो",
+        "लेनदेन दिखाओ",
+        "बिल भरो",
+        "बचत सुझाव दो",
+        "लोन कितना बाकी है"
+      ]
+    },
+    {
+      "language": "sw-KE",
+      "commands": [
+        "angalia salio",
+        "tuma 500 kwa Asha",
+        "onyesha miamala",
+        "lipa bili",
+        "vidokezo vya akiba"
+      ]
+    }
+  ],
+  "api_test_requests": [
+    {
+      "description": "Process voice command",
+      "method": "POST",
+      "url": "/api/voice/command",
+      "body": { "userId": "user_001", "transcript": "check my balance", "language": "en-US" }
+    },
+    {
+      "description": "Send money",
+      "method": "POST",
+      "url": "/api/transactions/send",
+      "body": { "userId": "user_001", "toContact": "Asha", "amount": 500 }
+    },
+    {
+      "description": "Get balance",
+      "method": "GET",
+      "url": "/api/accounts/user_001/balance"
+    },
+    {
+      "description": "Get history",
+      "method": "GET",
+      "url": "/api/transactions/user_001?limit=5"
+    },
+    {
+      "description": "Pay bill",
+      "method": "POST",
+      "url": "/api/transactions/pay-bill",
+      "body": { "userId": "user_001", "billType": "Electricity", "amount": 320 }
+    }
+  ]
+}
